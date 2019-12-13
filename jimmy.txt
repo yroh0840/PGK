@@ -1,4 +1,0 @@
-#前迫千寿と申します。このたびはどうぞよろしくおねがいいたあしｍっまあｍ
-import tkinter as tk
-import math
-print('hell PGK')
