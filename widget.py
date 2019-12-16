@@ -26,5 +26,40 @@ def run():
                 bd=2               # 枠線の幅を設定
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
+
+    img = tk.PhotoImage(file = 'img1.gif')    # 表示するイメージを用意
+    canvas.create_image(                      # キャンバス上にイメージを配置
+        0,                                    # x座標
+        0,                                    # y座標
+        image = img,                          # 配置するイメージオブジェクトを指定
+        anchor = tk.NW                        # 配置の起点となる位置を左上隅に指定
+    )
+
+    # 応答エリアを作成
+    response_area = tk.Label(
+                        root,                 # 親要素をメインウィンドウに設定
+                        width=50,             # 幅を設定
+                        height=10,            # 高さを設定
+                        bg='yellow'           # 背景色を設定
+                        font=font,            # フォントを設定
+                        relief=tk.RIDGE,      # 枠線の種類を設定
+                        bd=2                  # 枠線の幅を設定
+                    )
+    response_area.place(x=370, y=305)         # メインウィンドウ上に配置
+
+    # フレームの作成
+    frame = tk.Frame(
+                root,                         # 親要素はメインウィンドウ
+                relief=tk.RIDGE,              # ボーダーの種類
+                borderwidth = 4               # ボーダーの幅を設定
+            )
+
+    # メインループ
+    root.mainloop()
+
+# プログラムの起点
+if __name__ == '__main__':
+    run()
+
     
 
