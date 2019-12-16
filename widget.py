@@ -40,7 +40,7 @@ def run():
                         root,                 # 親要素をメインウィンドウに設定
                         width=50,             # 幅を設定
                         height=10,            # 高さを設定
-                        bg='yellow'           # 背景色を設定
+                        bg='yellow',           # 背景色を設定
                         font=font,            # フォントを設定
                         relief=tk.RIDGE,      # 枠線の種類を設定
                         bd=2                  # 枠線の幅を設定
