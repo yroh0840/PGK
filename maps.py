@@ -2,18 +2,28 @@ import widget as wt
 import requests
 import googlemaps
 
-#Geocoding APIのURL
-Url = "https://maps.googleapis.com/maps/api/geocode/json"
+key = "AIzaSyBgOUJo1ZUpZLy-9JnGx4hLGcw8cO71yEw" #取得したAPIキーをセット
+gmaps = googlemaps.Client(key=key)
+ 
+#住所をジオコーディングする
+results = gmaps.geocode("PGK江坂校", None, None, None, "Ja")
+ 
+#リクエスト結果
+print(results)
 
+#********************************ぐるナビ**********
+#レストラン検索APIのURL
+Url = "https://api.gnavi.co.jp/RestSearchAPI/v3/"
+ 
 #パラメータの設定
 params={}
-params["key"] = "AIzaSyBgOUJo1ZUpZLy-9JnGx4hLGcw8cO71yEw" #取得したAPIキーをセット
-params["address"] = "株式会社Yasui"
-params["language"] = "ja"
-
+params["keyid"] = "f8538f6f177eaaa41226f9fc9a805897" #取得したアクセスキー
+params["latitude"] = "35.695861"
+params["longitude"] = "139.775018"
+params["range"] = "1"
+ 
 #リクエスト結果
 print(requests.get(Url, params).json())
-
 
 
 '''
