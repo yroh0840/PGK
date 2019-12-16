@@ -1,4 +1,4 @@
-import tkinter as tkinter
+import tkinter as tk
 
 # グローバル変数の定義
 
@@ -19,10 +19,12 @@ def run():
 
     #キャンバスの作成
     canvas = tk.Canvas(
-                root,              #親要素をメインウィンドウに設定
-                width = 300,       #幅を設定
-                height = 500,
-                relief=tk.RIDGE,
-                bd=2
+                root,              # 親要素をメインウィンドウに設定
+                width = 300,       # 幅を設定
+                height = 500,      # 高さを設定
+                relief=tk.RIDGE,   # 枠線を表示
+                bd=2               # 枠線の幅を設定
             )
-    canvas.place(x=370, y=0)
+    canvas.place(x=370, y=0)       # メインウィンドウ上に配置
+    
+
