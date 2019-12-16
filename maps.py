@@ -3,7 +3,8 @@ import requests
 import googlemaps
 
 class map():
-    def __init__(self, master):
+    def __init__(self, master=None):
         super().__init__(master)
 
     def 
+
