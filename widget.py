@@ -12,7 +12,9 @@ def run():
     # メインウインドウを作成
     root = tk.Tk()
     # 仮）ウィンドウサイズを設定
-    root.geometry('560x880')
+    root.geometry('750x1334')
+    # 仮）ウィンドウタイトルを設定
+    root.title('仮）やっさんずラブ')
     # 仮）フォントの用意
     font=('Helevetica', 14)
     font_log=('Helevetica', 11)
@@ -27,11 +29,11 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
-    img = tk.PhotoImage(file = 'img1.gif')    # 表示するイメージを用意
+    #img = tk.PhotoImage(file = '   ')    # 表示するイメージを用意
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
-        image = img,                          # 配置するイメージオブジェクトを指定
+        #image = img,                          # 配置するイメージオブジェクトを指定
         anchor = tk.NW                        # 配置の起点となる位置を左上隅に指定
     )
 
@@ -53,6 +55,7 @@ def run():
                 relief=tk.RIDGE,              # ボーダーの種類
                 borderwidth = 4               # ボーダーの幅を設定
             )
+    
 
     # メインループ
     root.mainloop()
