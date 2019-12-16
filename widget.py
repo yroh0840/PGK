@@ -29,7 +29,7 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
-    #img = tk.PhotoImage(file = '   ')    # 表示するイメージを用意
+    #img = tk.PhotoImage(file = '')    # 表示するイメージを用意
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
@@ -55,7 +55,12 @@ def run():
                 relief=tk.RIDGE,              # ボーダーの種類
                 borderwidth = 4               # ボーダーの幅を設定
             )
-    
+    # 縦のスクロールバーを生成
+    sb1 = tk.Scrollbar(
+            root,                             # 縦要素はメインウィンドウ
+            orient = tk.VERTICAL,             # 縦方向のスクロールバーにする
+            #command =                         # スクロール時
+    )
 
     # メインループ
     root.mainloop()
