@@ -22,8 +22,8 @@ def run():
     #キャンバスの作成
     canvas = tk.Canvas(
                 root,              # 親要素をメインウィンドウに設定
-                width = 300,       # 幅を設定
-                height = 500,      # 高さを設定
+                width = 35,       # 幅を設定
+                height = 30,      # 高さを設定
                 relief=tk.RIDGE,   # 枠線を表示
                 bd=2               # 枠線の幅を設定
             )
@@ -40,8 +40,8 @@ def run():
     # 応答エリアを作成
     response_area = tk.Label(
                         root,                 # 親要素をメインウィンドウに設定
-                        width=50,             # 幅を設定
-                        height=10,            # 高さを設定
+                        width=35,             # 幅を設定
+                        height=30,            # 高さを設定
                         bg='yellow',           # 背景色を設定
                         font=font,            # フォントを設定
                         relief=tk.RIDGE,      # 枠線の種類を設定
@@ -59,7 +59,7 @@ def run():
     # リストボックスを作成
     lb = tk.Listbox(
             root,                             # 親要素はメインウインドウ
-            width=42,                         # 幅を設定
+            width=91,                         # 幅を設定
             height=30,                        # 高さを設定
             font=font_log                     # フォントを設定
     )
@@ -78,12 +78,14 @@ def run():
     # ボタンの作成
     button = tk.Button(
                 frame,
-                width=15,
+                width=5,
                 text ='開始',
+                #bg='#f0e68c',
+                #fg='#ff0000',
                 #command=
         )
     button.pack(side = tk.LEFT)
-    frame.place(x=100, y=100)
+    frame.place(x=700, y=1300)
 
     # メインループ
     root.mainloop()
