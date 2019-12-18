@@ -11,13 +11,34 @@ def run():
     
     # メインウインドウを作成
     root = tk.Tk()
-    # 仮）ウィンドウサイズを設定
-    root.geometry('750x1334')
-    # 仮）ウィンドウタイトルを設定
+    # [確定]ウィンドウサイズを設定
+    root.geometry('1080x1920') 
+    # ウィンドウタイトルを設定
     root.title('ゴハンゴ')
     # 仮）フォントの用意
     font=('Helevetica', 14)
     font_log=('Helevetica', 11)
+    # メニューバーの作成
+    menubar = tk.Menu(root)
+    root.config(menu=menubar)
+    # ファイルメニュー
+    filemenu = tk.Menu(root)
+    menubar.add_cascade(label='ファイル', menu=filemenu)
+    filemenu.add_command(label='閉じる', command=root.destroy)
+    # オプションメニュー
+    action = tk.IntVar()
+    optionmenu = tk.Menu(menubar)
+    menubar.add_cascade(label='オプション', menu=optionmenu)
+    optionmenu.add_radiobutton(
+        label='Responderを表示',
+        variable = action,
+        value = 0
+    )
+    optionmenu.add_radiobutton(
+        label='Responderを表示しない',
+        variable = action,
+        value = 1
+    )
 
     #キャンバスの作成
     canvas = tk.Canvas(
@@ -29,11 +50,11 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
-    #img = tk.PhotoImage(file = '')    # 表示するイメージを用意
+    img = tk.PhotoImage(file = r'C:\Users\pcuser\AppData\Local\Programs\Python\Python37\images.png')    # 表示するイメージを用意
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
-        #image = img,                          # 配置するイメージオブジェクトを指定
+        image = img,                          # 配置するイメージオブジェクトを指定
         anchor = tk.NW                        # 配置の起点となる位置を左上隅に指定
     )
 
@@ -55,6 +76,18 @@ def run():
                 relief=tk.RIDGE,              # ボーダーの種類
                 borderwidth = 4               # ボーダーの幅を設定
             )
+    # ボタンの作成
+    button = tk.Button(
+                frame,
+                width=5,
+                text ='開始',
+                #bg='#f0e68c',
+                #fg='#ff0000',
+                #command=
+        )
+    button.pack(side = tk.LEFT)
+    frame.place(x=700, y=1300)
+
 
     # リストボックスを作成
     lb = tk.Listbox(
@@ -75,17 +108,7 @@ def run():
     lb.grid(row = 0, column = 0)
     sb1.grid(row = 0, column = 1, sticky = tk.NS)
 
-    # ボタンの作成
-    button = tk.Button(
-                frame,
-                width=5,
-                text ='開始',
-                #bg='#f0e68c',
-                #fg='#ff0000',
-                #command=
-        )
-    button.pack(side = tk.LEFT)
-    frame.place(x=700, y=1300)
+    
 
     # メインループ
     root.mainloop()
