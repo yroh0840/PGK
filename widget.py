@@ -11,9 +11,9 @@ def run():
     
     # メインウインドウを作成
     root = tk.Tk()
-    # 仮）ウィンドウサイズを設定
-    root.geometry('750x1334')
-    # 仮）ウィンドウタイトルを設定
+    # [確定]ウィンドウサイズを設定
+    root.geometry('1080x1920') 
+    # ウィンドウタイトルを設定
     root.title('ゴハンゴ')
     # 仮）フォントの用意
     font=('Helevetica', 14)
@@ -22,26 +22,26 @@ def run():
     #キャンバスの作成
     canvas = tk.Canvas(
                 root,              # 親要素をメインウィンドウに設定
-                width = 300,       # 幅を設定
-                height = 500,      # 高さを設定
+                width = 35,       # 幅を設定
+                height = 30,      # 高さを設定
                 relief=tk.RIDGE,   # 枠線を表示
                 bd=2               # 枠線の幅を設定
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
-    #img = tk.PhotoImage(file = '')    # 表示するイメージを用意
+    img = tk.PhotoImage(file = r'C:\Users\pcuser\AppData\Local\Programs\Python\Python37\images.png')    # 表示するイメージを用意
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
-        #image = img,                          # 配置するイメージオブジェクトを指定
+        image = img,                          # 配置するイメージオブジェクトを指定
         anchor = tk.NW                        # 配置の起点となる位置を左上隅に指定
     )
 
     # 応答エリアを作成
     response_area = tk.Label(
                         root,                 # 親要素をメインウィンドウに設定
-                        width=50,             # 幅を設定
-                        height=10,            # 高さを設定
+                        width=35,             # 幅を設定
+                        height=30,            # 高さを設定
                         bg='yellow',           # 背景色を設定
                         font=font,            # フォントを設定
                         relief=tk.RIDGE,      # 枠線の種類を設定
@@ -59,7 +59,7 @@ def run():
     # リストボックスを作成
     lb = tk.Listbox(
             root,                             # 親要素はメインウインドウ
-            width=42,                         # 幅を設定
+            width=91,                         # 幅を設定
             height=30,                        # 高さを設定
             font=font_log                     # フォントを設定
     )
@@ -78,12 +78,14 @@ def run():
     # ボタンの作成
     button = tk.Button(
                 frame,
-                width=15,
+                width=5,
                 text ='開始',
+                #bg='#f0e68c',
+                #fg='#ff0000',
                 #command=
         )
     button.pack(side = tk.LEFT)
-    frame.place(x=100, y=100)
+    frame.place(x=700, y=1300)
 
     # メインループ
     root.mainloop()
