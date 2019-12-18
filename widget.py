@@ -8,11 +8,13 @@ import tkinter as tk
 
 def run():
     # グローバル変数を使用するための記述
-
+    
     # メインウインドウを作成
     root = tk.Tk()
     # 仮）ウィンドウサイズを設定
-    root.geometry('560x880')
+    root.geometry('750x1334')
+    # 仮）ウィンドウタイトルを設定
+    root.title('ゴハンゴ')
     # 仮）フォントの用意
     font=('Helevetica', 14)
     font_log=('Helevetica', 11)
@@ -27,11 +29,11 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
-    img = tk.PhotoImage(file = 'img1.gif')    # 表示するイメージを用意
+    #img = tk.PhotoImage(file = '')    # 表示するイメージを用意
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
-        image = img,                          # 配置するイメージオブジェクトを指定
+        #image = img,                          # 配置するイメージオブジェクトを指定
         anchor = tk.NW                        # 配置の起点となる位置を左上隅に指定
     )
 
@@ -53,6 +55,35 @@ def run():
                 relief=tk.RIDGE,              # ボーダーの種類
                 borderwidth = 4               # ボーダーの幅を設定
             )
+
+    # リストボックスを作成
+    lb = tk.Listbox(
+            root,                             # 親要素はメインウインドウ
+            width=42,                         # 幅を設定
+            height=30,                        # 高さを設定
+            font=font_log                     # フォントを設定
+    )
+    # 縦のスクロールバーを生成
+    sb1 = tk.Scrollbar(
+            root,                             # 縦要素はメインウィンドウ
+            orient = tk.VERTICAL,             # 縦方向のスクロールバーにする
+            command = lb.yview                # スクロール時にListboxのyview()メソッドを呼ぶ
+    )
+    # リストボックスとスクロールバーを連動させる
+    lb.configure(yscrollcommand = sb1.set)
+    # grid()でリストボックス、スクロールバーを画面上に配置
+    lb.grid(row = 0, column = 0)
+    sb1.grid(row = 0, column = 1, sticky = tk.NS)
+
+    # ボタンの作成
+    button = tk.Button(
+                frame,
+                width=15,
+                text ='開始',
+                #command=
+        )
+    button.pack(side = tk.LEFT)
+    frame.place(x=100, y=100)
 
     # メインループ
     root.mainloop()
