@@ -30,14 +30,14 @@ def run():
     optionmenu = tk.Menu(menubar)
     menubar.add_cascade(label='オプション', menu=optionmenu)
     optionmenu.add_radiobutton(
-        label='Responderを表示',
-        variable = action,
-        value = 0
+        label='Responderを表示',                     # アイテム名
+        variable = action,                           # 選択時の値を格納するオブジェクト
+        value = 0                                    # actionの値を0にする
     )
     optionmenu.add_radiobutton(
-        label='Responderを表示しない',
-        variable = action,
-        value = 1
+        label='Responderを表示しない',                # アイテム名
+        variable = action,                           # 選択時の値を格納するオブジェクト
+        value = 1                                    # actionの値を0にする
     )
 
     #キャンバスの作成
@@ -78,15 +78,15 @@ def run():
             )
     # ボタンの作成
     button = tk.Button(
-                frame,
-                width=5,
-                text ='開始',
+                frame,                        # 親要素はフレーム
+                width=5,                      # 幅を設定
+                text ='開始',                  # ボタンに表示するテキスト
                 #bg='#f0e68c',
                 #fg='#ff0000',
                 #command=
         )
-    button.pack(side = tk.LEFT)
-    frame.place(x=700, y=1300)
+    button.pack(side = tk.LEFT)               # フレームに左詰で配置する
+    frame.place(x=700, y=1300)                # フレームを画面上に配置
 
 
     # リストボックスを作成
