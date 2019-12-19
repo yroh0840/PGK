@@ -18,6 +18,27 @@ def run():
     # 仮）フォントの用意
     font=('Helevetica', 14)
     font_log=('Helevetica', 11)
+    # メニューバーの作成
+    menubar = tk.Menu(root)
+    root.config(menu=menubar)
+    # ファイルメニュー
+    filemenu = tk.Menu(root)
+    menubar.add_cascade(label='ファイル', menu=filemenu)
+    filemenu.add_command(label='閉じる', command=root.destroy)
+    # オプションメニュー
+    action = tk.IntVar()
+    optionmenu = tk.Menu(menubar)
+    menubar.add_cascade(label='オプション', menu=optionmenu)
+    optionmenu.add_radiobutton(
+        label='Responderを表示',
+        variable = action,
+        value = 0
+    )
+    optionmenu.add_radiobutton(
+        label='Responderを表示しない',
+        variable = action,
+        value = 1
+    )
 
     #キャンバスの作成
     canvas = tk.Canvas(
@@ -55,6 +76,18 @@ def run():
                 relief=tk.RIDGE,              # ボーダーの種類
                 borderwidth = 4               # ボーダーの幅を設定
             )
+    # ボタンの作成
+    button = tk.Button(
+                frame,
+                width=5,
+                text ='開始',
+                #bg='#f0e68c',
+                #fg='#ff0000',
+                #command=
+        )
+    button.pack(side = tk.LEFT)
+    frame.place(x=700, y=1300)
+
 
     # リストボックスを作成
     lb = tk.Listbox(
@@ -75,17 +108,7 @@ def run():
     lb.grid(row = 0, column = 0)
     sb1.grid(row = 0, column = 1, sticky = tk.NS)
 
-    # ボタンの作成
-    button = tk.Button(
-                frame,
-                width=5,
-                text ='開始',
-                #bg='#f0e68c',
-                #fg='#ff0000',
-                #command=
-        )
-    button.pack(side = tk.LEFT)
-    frame.place(x=700, y=1300)
+    
 
     # メインループ
     root.mainloop()
