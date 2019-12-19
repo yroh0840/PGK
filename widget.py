@@ -61,7 +61,7 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
-    img = tk.PhotoImage(file = r'C:\Users\pcuser\Documents\GitHub\PGK\images.png')    # 表示するイメージを用意
+    img = tk.PhotoImage(file = r'C:\Users\pcuser\Documents\GitHub\PGK\material\boys&girls\boy_01_invi.png')    # 表示するイメージを用意
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
