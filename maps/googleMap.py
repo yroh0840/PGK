@@ -8,7 +8,7 @@ key = "AIzaSyBgOUJo1ZUpZLy-9JnGx4hLGcw8cO71yEw" #取得したAPIキーをセッ�
 gmaps = googlemaps.Client(key=key)
  
 #住所をジオコーディングする
-results = gmaps.geocode((36.5748441, 139.2394179))
+results = gmaps.reverse_geocode((34.7614, 135.5157))
  
 #リクエスト結果
 print(results)
