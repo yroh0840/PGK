@@ -1,21 +1,21 @@
 import tkinter as tk
 
 # グローバル変数の定義
-
-
+response_area = None              # 応答エリアのオブジェクトを保持
+lb = None                         # ログ表示用リストボックスを保持
+action = None                     # 'オプション'メニューの状態を保持
 
 # 画面を描画する関数
-
 def run():
     # グローバル変数を使用するための記述
-    
+    global response_area, lb, action
     # メインウインドウを作成
     root = tk.Tk()
-    # [確定]ウィンドウサイズを設定
+    # ウィンドウサイズを設定
     root.geometry('1080x1920') 
     # ウィンドウタイトルを設定
     root.title('ゴハンゴ')
-    # 仮）フォントの用意
+    # フォントの用意
     font=('Helevetica', 14)
     font_log=('Helevetica', 11)
     # メニューバーの作成
@@ -25,20 +25,31 @@ def run():
     filemenu = tk.Menu(root)
     menubar.add_cascade(label='ファイル', menu=filemenu)
     filemenu.add_command(label='閉じる', command=root.destroy)
-    # オプションメニュー
+    # メニュー
     action = tk.IntVar()
     optionmenu = tk.Menu(menubar)
-    menubar.add_cascade(label='オプション', menu=optionmenu)
+    menubar.add_cascade(label='メニュー', menu=optionmenu)
     optionmenu.add_radiobutton(
-        label='Responderを表示',                     # アイテム名
-        variable = action,                           # 選択時の値を格納するオブジェクト
-        value = 0                                    # actionの値を0にする
+        label='和食',                     # アイテム名
+        #variable = action,                           # 選択時の値を格納するオブジェクト
+        #value = 0                                    # actionの値を0にする
     )
     optionmenu.add_radiobutton(
-        label='Responderを表示しない',                # アイテム名
-        variable = action,                           # 選択時の値を格納するオブジェクト
-        value = 1                                    # actionの値を0にする
+        label='洋食',                # アイテム名
+        #variable = action,                           # 選択時の値を格納するオブジェクト
+        #value = 0                                    # actionの値を0にする
     )
+    optionmenu.add_radiobutton(
+        label='中華',                # アイテム名
+        #variable = action,                           # 選択時の値を格納するオブジェクト
+        #value = 0                                    # actionの値を0にする
+    )
+    optionmenu.add_radiobutton(
+        label='ファーストフード',                # アイテム名
+        #variable = action,                           # 選択時の値を格納するオブジェクト
+        #value = 0                                    # actionの値を0にする
+    )
+
 
     #キャンバスの作成
     canvas = tk.Canvas(
@@ -63,7 +74,7 @@ def run():
                         root,                 # 親要素をメインウィンドウに設定
                         width=35,             # 幅を設定
                         height=30,            # 高さを設定
-                        bg='yellow',           # 背景色を設定
+                        #bg='yellow',           # 背景色を設定
                         font=font,            # フォントを設定
                         relief=tk.RIDGE,      # 枠線の種類を設定
                         bd=2                  # 枠線の幅を設定
