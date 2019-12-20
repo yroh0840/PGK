@@ -61,7 +61,11 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
+<<<<<<< HEAD
+    img = tk.PhotoImage(file = r'C:\Users\pcuser\AppData\Local\Programs\Python\Python37\images.png')    # 表示するイメージを用意
+=======
     img = tk.PhotoImage(file = r'C:\Users\pcuser\Documents\GitHub\PGK\material\boys&girls\boy_01_invi.png')    # 表示するイメージを用意
+>>>>>>> 80229c905a6e8814835016546daca005019e08ac
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
@@ -112,19 +116,13 @@ def run():
             orient = tk.VERTICAL,             # 縦方向のスクロールバーにする
             command = lb.yview                # スクロール時にListboxのyview()メソッドを呼ぶ
     )
-    # 横のスクロールバーを生成
-    sb2 = tk.Scrollbar(
-            root,                             # 親要素はメインウインドウ
-            orient = tk.HORIZONTAL,            # 横方向のスクロールバーにする
-            command = lb.xview                # スクロール時にListboxのxview()メソッドを呼ぶ
-    )
     # リストボックスとスクロールバーを連動させる
     lb.configure(yscrollcommand = sb1.set)
-    lb.configure(xscrollcommand = sb2.set)
     # grid()でリストボックス、スクロールバーを画面上に配置
     lb.grid(row = 0, column = 0)
     sb1.grid(row = 0, column = 1, sticky = tk.NS)
-    sb2.grid(row = 1, column = 0, sticky = tk.EW)
+
+    
 
     # メインループ
     root.mainloop()
