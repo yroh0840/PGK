@@ -61,7 +61,11 @@ def run():
             )
     canvas.place(x=370, y=0)       # メインウィンドウ上に配置
 
+<<<<<<< HEAD
     img = tk.PhotoImage(file = r'C:\Users\pcuser\AppData\Local\Programs\Python\Python37\images.png')    # 表示するイメージを用意
+=======
+    img = tk.PhotoImage(file = r'C:\Users\pcuser\Documents\GitHub\PGK\material\boys&girls\boy_01_invi.png')    # 表示するイメージを用意
+>>>>>>> 80229c905a6e8814835016546daca005019e08ac
     canvas.create_image(                      # キャンバス上にイメージを配置
         0,                                    # x座標
         0,                                    # y座標
@@ -90,7 +94,7 @@ def run():
     # ボタンの作成
     button = tk.Button(
                 frame,                        # 親要素はフレーム
-                width=5,                      # 幅を設定
+                width=500,                      # 幅を設定
                 text ='開始',                  # ボタンに表示するテキスト
                 #bg='#f0e68c',
                 #fg='#ff0000',
@@ -98,7 +102,6 @@ def run():
         )
     button.pack(side = tk.LEFT)               # フレームに左詰で配置する
     frame.place(x=700, y=1300)                # フレームを画面上に配置
-
 
     # リストボックスを作成
     lb = tk.Listbox(
