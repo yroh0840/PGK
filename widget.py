@@ -90,14 +90,14 @@ def run():
     # ボタンの作成
     button = tk.Button(
                 frame,                        # 親要素はフレーム
-                width=500,                      # 幅を設定
-                text ='開始',                  # ボタンに表示するテキスト
+                #width=500,                      # 幅を設定
+                text='開始',                  # ボタンに表示するテキスト
                 #bg='#f0e68c',
                 #fg='#ff0000',
                 #command=
         )
-    button.pack(side = tk.LEFT)               # フレームに左詰で配置する
-    frame.place(x=700, y=1300)                # フレームを画面上に配置
+    button.pack(side=tk.LEFT)               # フレームに左詰で配置する
+    #frame.place(x=700, y=1300)                # フレームを画面上に配置
 
     # リストボックスを作成
     lb = tk.Listbox(
