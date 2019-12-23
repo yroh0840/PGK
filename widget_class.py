@@ -15,7 +15,7 @@ class Application(tk.Frame):
         self.canvas.create_image(0,0,image=self.image, anchor=tk.NW)
 
         self.label = tk.Label(self, text='ささっと外食先決めましょ！')
-        self.label.place(x=20, y=20)
+        self.label.place(x=20, y=20, width='500', height='30')
 
 
 
