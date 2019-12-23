@@ -16,11 +16,10 @@ class Application(tk.Frame):
 
         self.label = tk.Label(self, text='ささっと外食先決めましょ！')
         self.label.place(x=20, y=20, width='500', height='30')
-        self.frame = tk.Frame(self, relief=tk.RIDGE, bd=2)
-20:         for text, color in [('はい', 'gray'), ('いいえ', 'gray1'), ('どちらでもない', 'gray2')]
-21:             self.frame=Tk.Label(self.frame, text=text, bg=color, font=('', '16'))
-22:             self.frame.pack(side=tk.Right)
-23:             self.frame.place(relx=0.2, rely=0.2)
+        self.frame = tk.Frame(self, relief=tk.ridge, bd=2)
+            for text, color in [('はい', 'gray'), ('いいえ', 'gray1'), ('どちらでもない', 'gray2')]:
+                self.frame = tk.Label(self.frame, text=text, bg=color, font=('', '16'))             self.frame.pack(side=tk.Right)
+        self.frame.place(x=40, y=0)
 
 
 
