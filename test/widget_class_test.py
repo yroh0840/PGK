@@ -18,11 +18,8 @@ class Application(tk.Frame):
 
         self.label = tk.Label(self, text='ささっと外食先決めましょ！')
         self.label.place(x=20, y=20, width='500', height='30')
-        self.frame = tk.Frame(self, relief='ridge', bd=2)
-        for text, color in [('はい', 'gray'), ('いいえ', 'gray1'), ('どちらでもない', 'gray2')]:
-            self.frame = tk.Label(self, text=text, bg=color, font=('', '16'))
-        #self.frame.pack(side='right')
-        self.frame.place(x=400, y=50)
+        self.frame = tk.Frame(self, bg=')
+        self.frame.place(x=400, y=50)       
 
 
 
