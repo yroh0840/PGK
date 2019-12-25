@@ -12,7 +12,6 @@ class Application(tk.Frame):
         self.curdir = os.path.dirname(__file__) # 現在のフォルダのパス取得
         self.image = tk.PhotoImage(file = self.curdir+'/../material/backgrounds_02/background_girl02.png') # 画像のｲﾝｽﾀﾝｽ変数
         self.canvas = tk.Canvas(self, width=540, height=960, bg="white")
-        # self.canvas.place(x=0,y=0)
         self.canvas.pack()
 
         self.canvas.create_image(0,0,image=self.image, anchor=tk.NW)
@@ -25,26 +24,35 @@ class Application(tk.Frame):
         self.label.place(x=100, y=20, width='100', height='50')     
 
         self.frame = tk.Frame(self, bg='lightgreen')
-        self.frame.place(x=250, y=60, width='250', height='50')
+        self.frame.place(x=250, y=80, width='250', height='50')
         self.sticky = tk.W+tk.E+tk.N+tk.S
         for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
             self.button = tk.Button(self.frame, text=text, bg=color, width=4)
             self.button.grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
 
-        self.frame2 = tk.Frame(self, bg='lightgreen')
-        self.frame2.pack(side=tk.BOTTOM)
-        for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
-            self.button2 = tk.Button(self.frame2, text=text, bg=color, width=4)
-            self.button2.grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
-           
-        '''
-        self.frame_menu_bar = tk.Frame(self, bg='lightgreen')
-        self.frame_menu_bar.pack()
-        for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
-            self.button_set = tk.Button(self.frame_menu_bar, text=text, bg=color, width=4)
-            self.button_set.grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
-        '''
+        self.button.config(command=self.add_widget)
 
+        # 一番下のボタンたち
+        self.frame = tk.Frame(self, bg='lightgreen')
+        self.frame.place(x=0, y=860, width='560', height='100')
+        for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue'), ('E', 'Red')]):
+            self.button = tk.Button(self.frame, text=text, bg=color, width='5', height='3')
+            self.button.grid(row=0, column=cn, sticky=self.sticky, padx='20', pady='17', ipadx='10')
+
+    # ボタンを押した後に追加されるボタンたちメソッド
+    def add_widget(self):
+        self.label_image = tk.Label(self, width=50, height=50, image=self.image_girl)
+        self.label_image.place(x=20, y=120)
+        self.label = tk.Label(self, text='何が食いたいんや？')
+        self.label.place(x=100, y=120, width='100', height='50')
+
+        self.frame = tk.Frame(self, bg='lightgreen')
+        self.frame.place(x=250, y=160, width='50', height='50')
+        self.sticky = tk.W+tk.E+tk.N+tk.S
+        for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
+            self.button = tk.Button(self.frame, text=text, bg=color, width=4)
+            self.button.grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
+        self.button.config(command='')
 
 def run():
     root = tk.Tk()
