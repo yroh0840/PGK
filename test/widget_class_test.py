@@ -36,7 +36,7 @@ class Application(tk.Frame):
         self.frame = tk.Frame(self, bg='lightgreen')
         self.frame.place(x=0, y=860, width='560', height='100')
         for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue'), ('E', 'Red')]):
-            self.button = tk.Button(self.frame, text=text, bg=color, width='5', height='3')
+            self.button = tk.Button(self.frame, text=text, bg=color, width='5', height='3', command=lambda: self.frame.place_forget())
             self.button.grid(row=0, column=cn, sticky=self.sticky, padx='20', pady='17', ipadx='10')
 
     # ボタンを押した後に追加されるボタンたちメソッド
