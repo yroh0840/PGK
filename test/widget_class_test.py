@@ -17,53 +17,67 @@ class Application(tk.Frame):
 
         # 一番下のボタンたち
         self.sticky = tk.W+tk.E+tk.N+tk.S
-        self.frame = tk.Frame(self, bg='lightgreen')
-        self.frame.place(x=0, y=860, width='560', height='100')
-        for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue'), ('E', 'Red')]):
-            self.button = tk.Button(self.frame, text=text, bg=color, width='5', height='3',
-                                    command=lambda:[self.frame.place_forget(), self.parent_frame_1.place(x=0, y=0)])
-            self.button.grid(row=0, column=cn, sticky=self.sticky, padx='20', pady='17', ipadx='10')
+        self.bottom_frame = tk.Frame(self, bg='lightgreen')
+        self.bottom_frame.place(x=0, y=460, width='560', height='100')
+        for column, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen')]):
+            self.button = tk.Button(self.bottom_frame, text=text, bg=color, width='5', height='3',
+                                    command=lambda:[self.parent_frame_1.place(x=0, y=0), self.bottom_frame.destroy()])
+            self.button.grid(row=0, column=column, sticky=self.sticky, padx='20', pady='17', ipadx='10')
         # トークエリア
-        self.parent_frame_1 = tk.Frame(self, width='560', height='128', bg='lightgreen')
+        self.parent_frame_1 = tk.Frame(self, width='560', height='128')
         self.parent_frame_1.place(x=0,y=0)
-        self.parent_frame_2 = tk.Frame(self, width='560', height='128', bg='red')
+        self.parent_frame_1.config(bg="systemTransparent")
+        self.parent_frame_2 = tk.Frame(self, width='560', height='128')
         self.parent_frame_2.place(x=0,y=128)
-        self.parent_frame_3 = tk.Frame(self, width='560', height='128', bg='yellow')
+        self.parent_frame_2.config(bg="systemTransparent")
+
+        self.parent_frame_3 = tk.Frame(self, width='560', height='128')
         self.parent_frame_3.place(x=0,y=256)
+        self.parent_frame_3.config(bg="systemTransparent")
+
+        self.svar1 = tk.StringVar() 
+        self.svar1.set('成功だね！')
+        self.svar2 = tk.StringVar()
+        self.svar2.set('チョベリバってかーんじぃ！')
+        self.svar3 = tk.StringVar()
+        self.svar3.set('ゲッツ！')
+
         # トークエリア一段目
         self.image_girl1 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
-        self.label_image = tk.Label(self.parent_frame_1, image=self.image_girl1)
-        self.label_image.place(x=0, y=0) 
-        self.label_comment = tk.Label(self.parent_frame_1, text='飯いくぞ！', font='100')
-        self.label_comment.place(x=64, y=0, height=68, )
+        self.label_image1 = tk.Label(self.parent_frame_1, image=self.image_girl1)
+        self.label_image1.place(x=0, y=0) 
+        self.label_comment1 = tk.Label(self.parent_frame_1, textvariable=self.svar1, font='100')
+        self.label_comment1.place(x=64, y=0, height=68, )
+        self.svar1 = tk.StringVar()
+        self.svar1.set('active')
         self.frame_button1 = tk.Frame(self.parent_frame_1, width='280', height='64', bg='white')
         self.frame_button1.place(x=280, y=64)
         for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
             self.button1 = tk.Button(self.frame_button1, text=text, bg=color, width=5, height=2,
-                                     command=lambda:[self.parent_frame_2.place(x=0,y=128), self.button1.config(state='disabled'), self.parent_frame_rotation_2])
+                                     command=lambda:[self.parent_frame_2.place(x=0,y=128), self.parent_frame_rotation_2()])
             self.button1.grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
-            #self.button1.config(state='disabled')
-
+            
         # トークエリア二段目
         self.image_girl2 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
-        self.label_image = tk.Label(self.parent_frame_2, image=self.image_girl2)
-        self.label_image.place(x=0, y=0)
-        self.label_comment = tk.Label(self.parent_frame_2, text='早く！', font='100')
-        self.label_comment.place(x=64, y=0, height=68, )
+        self.label_image2 = tk.Label(self.parent_frame_2, image=self.image_girl2)
+        self.label_image2.place(x=0, y=0)
+        self.label_comment2 = tk.Label(self.parent_frame_2, textvariable=self.svar2, font='100')
+        self.label_comment2.place(x=64, y=0, height=68, )
         self.frame_button2 = tk.Frame(self.parent_frame_2, width='280', height='64', bg='white')
         self.frame_button2.place(x=280, y=64)
         for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
             self.button2 = tk.Button(self.frame_button2, text=text, bg=color, width=5, height=2, 
-                                     command=lambda: [self.parent_frame_3.place(x=0, y=256), self.parent_frame_rotation_3])
+                                     command=lambda:[self.parent_frame_3.place(x=0, y=256), self.parent_frame_rotation_3()])
             self.button2.grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
             #self.button2.config(state='disabled')
 
         # トークエリア三段目
         self.image_girl3 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
-        self.label_image = tk.Label(self.parent_frame_3, image=self.image_girl3)
-        self.label_image.place(x=0, y=0)
-        self.label_comment = tk.Label(self.parent_frame_3, text='遅ない？！', font='100')
-        self.label_comment.place(x=64, y=0, height=68, )  
+        self.image_girl4 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/洗濯おばさん.png')
+        self.label_image3 = tk.Label(self.parent_frame_3, image=self.image_girl4)
+        self.label_image3.place(x=0, y=0)
+        self.label_comment3 = tk.Label(self.parent_frame_3, textvariable=self.svar3, font='100')
+        self.label_comment3.place(x=64, y=0, height=68, )  
         self.frame_button3 = tk.Frame(self.parent_frame_3, width='280', height='64', bg='white')
         self.frame_button3.place(x=280, y=64)
         for cn, (text, color) in enumerate([('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]):
@@ -74,26 +88,35 @@ class Application(tk.Frame):
         self.parent_frame_1.place_forget()
         self.parent_frame_2.place_forget()
         self.parent_frame_3.place_forget()
-       
-
+        
+        self.bvar1 = tk.BooleanVar()
+        self.bvar1.set(True)
+        self.bvar2 = tk.BooleanVar()
+        self.bvar3 = tk.BooleanVar()
+    # トークを入れ替える関数
     def parent_frame_rotation_1(self):
-        if self.parent_frame_3.place(x=0, y=256):
+        #self.butoon1.config(stat
+        if self.bvar1.get() == True:
             self.parent_frame_3.place(x=0, y=128)
             self.parent_frame_1.place(x=0, y=256)
             self.parent_frame_2.place(x=0, y=0)
+            self.bvar2.set(True)
+
 
     def parent_frame_rotation_2(self):
-        if self.parent_frame_1.place(x=0, y=256):
+        if self.bvar2.get() == True:
             self.parent_frame_1.place(x=0, y=128)
             self.parent_frame_2.place(x=0, y=256)
             self.parent_frame_3.place(x=0, y=0)
+            self.bvar3.set(True)
 
     def parent_frame_rotation_3(self):
-        if self.parent_frame_2.place(x=0, y=256):
+        if self.bvar3.get() == True:
             self.parent_frame_2.place(x=0, y=128)
             self.parent_frame_3.place(x=0, y=256)
             self.parent_frame_1.place(x=0, y=0)
-        
+
+    
         '''
         # talk_area
         self.image_girl = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
@@ -168,6 +191,7 @@ class Application(tk.Frame):
 '''
 def run():
     root = tk.Tk()
+    root.wm_attributes("-transparent", True) 
     root.geometry('540x960+0+0')
     root.title('ゴハンゴ')
     app = Application(root)
