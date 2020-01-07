@@ -16,3 +16,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     Example(root).pack(side="top", fill="both", expand="true")
     root.mainloop()
+
+#参考URL
+#https://tutorialmore.com/questions-716474.htm
