@@ -10,7 +10,7 @@ class Application(tk.Frame):
 
     def create_widgets(self):
         self.curdir = os.path.dirname(__file__) # 現在のフォルダのパス取得
-        self.image = tk.PhotoImage(file = self.curdir+'/../material/backgrounds_02/background_girl02.png') # 画像のｲﾝｽﾀﾝｽ変数
+        self.image = tk.PhotoImage(file = self.curdir+'/../../material/backgrounds_02/background_girl02.png') # 画像のｲﾝｽﾀﾝｽ変数
         self.canvas = tk.Canvas(self, width=540, height=960, bg="white")
         self.canvas.pack()
         self.canvas.create_image(0,0,image=self.image, anchor=tk.NW)
@@ -47,7 +47,7 @@ class Application(tk.Frame):
         self.svar3.set('そーだそーだ！')
 
         # トークエリア一段目
-        self.image_girl1 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
+        self.image_girl1 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', image=self.image_girl1)
         self.label_image1.place(x=0, y=0) 
         self.label_comment1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', textvariable=self.svar1, font='100')
@@ -72,7 +72,7 @@ class Application(tk.Frame):
             self.button_list1.append(self.button1)
             self.button_list1[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
         # トークエリア二段目
-        self.image_girl2 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
+        self.image_girl2 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', image=self.image_girl2)
         self.label_image2.place(x=0, y=0)
         self.label_comment2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', textvariable=self.svar2, font='100')
@@ -96,8 +96,8 @@ class Application(tk.Frame):
             #self.button2.config(state='disabled')
 
         # トークエリア三段目
-        self.image_girl3 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/girl_01_invi_circle.png')
-        self.image_girl4 = tk.PhotoImage(file = self.curdir+'/../material/buttons&entrywindows/洗濯おばさん.png')
+        self.image_girl3 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
+        self.image_girl4 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/洗濯おばさん.png')
         self.label_image3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', image=self.image_girl4)
         self.label_image3.place(x=0, y=0)
         self.label_comment3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', textvariable=self.svar3, font='100')
