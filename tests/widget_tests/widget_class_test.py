@@ -38,6 +38,7 @@ class Widget(tk.Frame):
             self.button = tk.Button(self.bottom_frame, image=image, width='170', height='100',
                                     command=lambda:[self.parent_frame_1.place(x=0, y=0), 
                                                     self.bottom_frame.destroy()])
+            self.button.bind('<Button-1>', self.button_distance)
             self.button.pack(padx='2', side='left')
             button_list.append(self.button)
         
@@ -56,13 +57,13 @@ class Widget(tk.Frame):
 
     # トークエリア一段目
     def talk_area_stage_1(self):
-        self.svar1 = tk.StringVar() 
-        self.svar1.set('maromaro')
+        svar1 = tk.StringVar() 
+        svar1.set('maromaro')
         self.image_girl1 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', image=self.image_girl1)
         self.label_image1.place(x=0, y=0) 
-        self.label_comment1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', textvariable=self.svar1, font='100')
-        self.label_comment1.place(x=64, y=0, height=68, )
+        self.label_comment1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', textvariable=svar1, font='100')
+        self.label_comment1.place(x=64, y=0, height=68)
         self.svar1 = tk.StringVar()
         self.svar1.set('active')
         self.frame_button1 = tk.Frame(self.parent_frame_1, width='280', height='64', bg='#fcf3e7')
@@ -77,12 +78,12 @@ class Widget(tk.Frame):
 
     # トークエリア二段目
     def talk_area_stage_2(self):
-        self.svar2 = tk.StringVar()
-        self.svar2.set('')
+        svar2 = tk.StringVar()
+        svar2.set('')
         self.image_girl2 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', image=self.image_girl2)
         self.label_image2.place(x=0, y=0)
-        self.label_comment2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', textvariable=self.svar2, font='100')
+        self.label_comment2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', textvariable=svar2, font='100')
         self.label_comment2.place(x=64, y=0, height=68, )
         self.frame_button2 = tk.Frame(self.parent_frame_2, width='280', height='64', bg='#fcf3e7')
         self.frame_button2.place(x=280, y=64)
@@ -96,12 +97,12 @@ class Widget(tk.Frame):
 
     # トークエリア三段目
     def talk_area_stage_3(self):
-        self.svar3 = tk.StringVar()
-        self.svar3.set('')
+        svar3 = tk.StringVar()
+        svar3.set('')
         self.image_girl3 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', image=self.image_girl3)
         self.label_image3.place(x=0, y=0)
-        self.label_comment3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', textvariable=self.svar3, font='100')
+        self.label_comment3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', textvariable=svar3, font='100')
         self.label_comment3.place(x=64, y=0, height=68, )  
         self.frame_button3 = tk.Frame(self.parent_frame_3, width='280', height='64', bg='#fcf3e7')
         self.frame_button3.place(x=280, y=64)
@@ -171,6 +172,13 @@ class Widget(tk.Frame):
             self.parent_frame_1.place(x=0, y=0)
             self.counter -= 1
 
+    def button_distance(self, event):
+        self.parent_frame_2.place(x=0, y=128)
+    def button_yen(self):
+        pass
+    def button_genre(self):
+        pass
+    '''
 class ButtonDistance(Widget):
     def __init__(self, master=None):
         super().__init__(master)
@@ -187,12 +195,12 @@ class ButtonYen(Widget):
 
 class ButtonGenre(Widget):
     pass
-
+'''
 def run():
     root = tk.Tk()
     root.geometry('540x960+0+0')
     root.title('ゴハンゴ')
-    app = ButtonDistance(root)
+    app = Widget(root)
     root.mainloop()
 
 if __name__ == '__main__':
