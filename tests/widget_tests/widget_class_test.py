@@ -16,7 +16,7 @@ class Widget(tk.Frame):
         self.talk_area_stage_2() # トークエリア二段目
         self.talk_area_stage_3() # トークエリア三段目
 
-    # 背景画像表示
+   # 背景画像表示
     def canvass(self):
         self.curdir = os.path.dirname(__file__) # 現在のフォルダのパス取得
         self.image = tk.PhotoImage(file = self.curdir+'/../../material/backgrounds_02/background_girl02.png') # 画像のｲﾝｽﾀﾝｽ変数
@@ -38,9 +38,11 @@ class Widget(tk.Frame):
             self.button = tk.Button(self.bottom_frame, image=image, width='170', height='100',
                                     command=lambda:[self.parent_frame_1.place(x=0, y=0), 
                                                     self.bottom_frame.destroy()])
-            self.button.bind('<Button-1>', self.button_distance)
             self.button.pack(padx='2', side='left')
             button_list.append(self.button)
+        button_list[0].bind('<Button-1>', self.button_distance)
+        button_list[1].bind('<Button-1>', self.button_yen)
+        button_list[2].bind('<Button-1>', self.button_genre)
         
     # トークエリアに入れるテキスト
     def talk_area(self):
@@ -57,18 +59,17 @@ class Widget(tk.Frame):
 
     # トークエリア一段目
     def talk_area_stage_1(self):
-        svar1 = tk.StringVar() 
-        svar1.set('maromaro')
+        self.svar_question_1 = tk.StringVar() 
         self.image_girl1 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', image=self.image_girl1)
         self.label_image1.place(x=0, y=0) 
-        self.label_comment1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', textvariable=svar1, font='100')
+        self.label_comment1 = tk.Label(self.parent_frame_1, bg='#fcf3e7', textvariable=self.svar_question_1, font='100')
         self.label_comment1.place(x=64, y=0, height=68)
-        self.svar1 = tk.StringVar()
-        self.svar1.set('active')
+        self.svar_state = tk.StringVar()
+        self.svar_state.set('active')
         self.frame_button1 = tk.Frame(self.parent_frame_1, width='280', height='64', bg='#fcf3e7')
-        self.frame_button1.place(x=280, y=64)
-        text_color_list_1 = [('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]
+        self.frame_button1.place(x=0, y=64)
+        text_color_list_1 = [('300m', 'magenta'), ('500m', 'yellow'), ('1000m', 'SeaGreen'), ('2000m', 'LightSkyBlue'), ('5000m', 'pink')]
         self.button_list1 = []
         for cn, (text, color) in enumerate(text_color_list_1):
             self.button1 = tk.Button(self.frame_button1, text=text, bg=color, width=5, height=2, 
@@ -78,16 +79,15 @@ class Widget(tk.Frame):
 
     # トークエリア二段目
     def talk_area_stage_2(self):
-        svar2 = tk.StringVar()
-        svar2.set('')
+        self.svar_question_2 = tk.StringVar()
         self.image_girl2 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', image=self.image_girl2)
         self.label_image2.place(x=0, y=0)
-        self.label_comment2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', textvariable=svar2, font='100')
+        self.label_comment2 = tk.Label(self.parent_frame_2, bg='#fcf3e7', textvariable=self.svar_question_2, font='100')
         self.label_comment2.place(x=64, y=0, height=68, )
         self.frame_button2 = tk.Frame(self.parent_frame_2, width='280', height='64', bg='#fcf3e7')
-        self.frame_button2.place(x=280, y=64)
-        text_color_list_2 = [('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]
+        self.frame_button2.place(x=0, y=64)
+        text_color_list_2 = [('¥500', 'magenta'), ('¥1000', 'yellow'), ('¥1500', 'SeaGreen'), ('¥2000', 'LightSkyBlue'), ('¥3000', 'pink')]
         self.button_list2 = []
         for cn, (text, color) in enumerate(text_color_list_2):
             self.button2 = tk.Button(self.frame_button2, text=text, bg=color, width=5, height=2, 
@@ -97,15 +97,14 @@ class Widget(tk.Frame):
 
     # トークエリア三段目
     def talk_area_stage_3(self):
-        svar3 = tk.StringVar()
-        svar3.set('')
+        self.svar_question_3 = tk.StringVar()
         self.image_girl3 = tk.PhotoImage(file = self.curdir+'/../../material/buttons&entrywindows/girl_01_invi_circle.png')
         self.label_image3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', image=self.image_girl3)
         self.label_image3.place(x=0, y=0)
-        self.label_comment3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', textvariable=svar3, font='100')
+        self.label_comment3 = tk.Label(self.parent_frame_3, bg='#fcf3e7', textvariable=self.svar_question_3, font='100')
         self.label_comment3.place(x=64, y=0, height=68, )  
         self.frame_button3 = tk.Frame(self.parent_frame_3, width='280', height='64', bg='#fcf3e7')
-        self.frame_button3.place(x=280, y=64)
+        self.frame_button3.place(x=0, y=64)
         text_color_list_3 = [('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]
         self.button_list3 = []
         for cn, (text, color) in enumerate(text_color_list_3):
@@ -173,11 +172,17 @@ class Widget(tk.Frame):
             self.counter -= 1
 
     def button_distance(self, event):
-        self.parent_frame_2.place(x=0, y=128)
-    def button_yen(self):
-        pass
-    def button_genre(self):
-        pass
+        self.svar_question_1.set('距離はどうしますか？')
+        self.svar_question_2.set('価格はどうしますか？')
+        self.svar_question_3.set('ジャンルはどうしますか？')
+    def button_yen(self, event):
+        self.svar_question_1.set('価格はどうしますか？')
+        self.svar_question_2.set('ジャンルはどうしますか？')
+        self.svar_question_3.set('距離はどうしますか？')
+    def button_genre(self, event):
+        self.svar_question_1.set('ジャンルはどうしますか？')
+        self.svar_question_2.set('距離はどうしますか？')
+        self.svar_question_3.set('価格はどうしますか？')
     '''
 class ButtonDistance(Widget):
     def __init__(self, master=None):
