@@ -1,3 +1,3 @@
 import geocoder
 g = geocoder.ip('me')
-print(g.latlng)
+lat, lon = str(g.latlng[0]), str(g.latlng[1])

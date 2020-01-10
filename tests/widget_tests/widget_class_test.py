@@ -72,7 +72,7 @@ class Widget(tk.Frame):
         text_color_list_1 = [('300m', 'magenta'), ('500m', 'yellow'), ('1000m', 'SeaGreen'), ('2000m', 'LightSkyBlue'), ('5000m', 'pink')]
         self.button_list1 = []
         for cn, (text, color) in enumerate(text_color_list_1):
-            self.button1 = tk.Button(self.frame_button1, text=text, bg=color, width=5, height=2, 
+            self.button1 = tk.Button(self.frame_button1, text=text, bg=color, width=8, height=2, 
                                     command=self.button1_command)
             self.button_list1.append(self.button1)
             self.button_list1[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
@@ -90,7 +90,7 @@ class Widget(tk.Frame):
         text_color_list_2 = [('¥500', 'magenta'), ('¥1000', 'yellow'), ('¥1500', 'SeaGreen'), ('¥2000', 'LightSkyBlue'), ('¥3000', 'pink')]
         self.button_list2 = []
         for cn, (text, color) in enumerate(text_color_list_2):
-            self.button2 = tk.Button(self.frame_button2, text=text, bg=color, width=5, height=2, 
+            self.button2 = tk.Button(self.frame_button2, text=text, bg=color, width=8, height=2, 
                                      command=self.button2_command)
             self.button_list2.append(self.button2)
             self.button_list2[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
@@ -105,10 +105,10 @@ class Widget(tk.Frame):
         self.label_comment3.place(x=64, y=0, height=68, )  
         self.frame_button3 = tk.Frame(self.parent_frame_3, width='280', height='64', bg='#fcf3e7')
         self.frame_button3.place(x=0, y=64)
-        text_color_list_3 = [('A', 'magenta'), ('B', 'yellow'), ('C', 'SeaGreen'), ('D', 'LightSkyBlue')]
+        text_color_list_3 = [('和食', 'magenta'), ('中華', 'yellow'), ('洋食', 'SeaGreen'), ('', 'LightSkyBlue')]
         self.button_list3 = []
         for cn, (text, color) in enumerate(text_color_list_3):
-            self.button3 = tk.Button(self.frame_button3, text=text, bg=color, width=5, height=2, 
+            self.button3 = tk.Button(self.frame_button3, text=text, bg=color, width=8, height=2, 
                                      command=self.button3_command)
             self.button_list3.append(self.button3)
             self.button_list3[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
@@ -121,10 +121,12 @@ class Widget(tk.Frame):
         self.button_list1[1].config(state='disabled')
         self.button_list1[2].config(state='disabled')
         self.button_list1[3].config(state='disabled')
+        self.button_list1[4].config(state='disabled')
         self.button_list2[0].config(state='active')
         self.button_list2[1].config(state='active')
         self.button_list2[2].config(state='active')
         self.button_list2[3].config(state='active')
+        self.button_list2[4].config(state='active')
     # トークエリア２段目のボタンコマンド
     def button2_command(self):
         self.parent_frame_3.place(x=0, y=256)
@@ -133,10 +135,12 @@ class Widget(tk.Frame):
         self.button_list2[1].config(state='disabled')
         self.button_list2[2].config(state='disabled')
         self.button_list2[3].config(state='disabled')
+        self.button_list2[4].config(state='disabled')
         self.button_list3[0].config(state='active')
         self.button_list3[1].config(state='active')
         self.button_list3[2].config(state='active')
         self.button_list3[3].config(state='active')
+        self.button_list3[4].config(state='active')
     # トークエリア３段目のボタンコマンド
     def button3_command(self): 
         self.parent_frame_rotation_1()
@@ -148,6 +152,7 @@ class Widget(tk.Frame):
         self.button_list1[1].config(state='active')
         self.button_list1[2].config(state='active')
         self.button_list1[3].config(state='active')
+        self.button_list1[4].config(state='active')
 
 
     # トークを入れ替える関数
@@ -172,40 +177,57 @@ class Widget(tk.Frame):
             self.counter -= 1
 
     def button_distance(self, event):
-        self.svar_question_1.set('距離はどうしますか？')
-        self.svar_question_2.set('価格はどうしますか？')
-        self.svar_question_3.set('ジャンルはどうしますか？')
+        self.data_list = []
+        self.svar_question_1.set('どの範囲で探す？')
+        self.svar_question_2.set('予算はいくら？')
+        self.svar_question_3.set('どのジャンルがいいかな？')
+
+          
     def button_yen(self, event):
-        self.svar_question_1.set('価格はどうしますか？')
-        self.svar_question_2.set('ジャンルはどうしますか？')
-        self.svar_question_3.set('距離はどうしますか？')
+        self.svar_question_1.set('予算はいくら？')
+        self.svar_question_2.set('どのジャンルがいいかな？')
+        self.svar_question_3.set('どの範囲で探す？')
     def button_genre(self, event):
-        self.svar_question_1.set('ジャンルはどうしますか？')
-        self.svar_question_2.set('距離はどうしますか？')
-        self.svar_question_3.set('価格はどうしますか？')
-    '''
-class ButtonDistance(Widget):
+        self.svar_question_1.set('どのジャンルがいいかな？')
+        self.svar_question_2.set('どの範囲で探す？')
+        self.svar_question_3.set('予算はいくら？')
+'''
+import requests
+import json
+import geocoder
+g = geocoder.ip('me')
+lat, lon = str(g.latlng[0]), str(g.latlng[1])
+pgk = ['34.7639591', '135.4932691']
+range = [str(5)]
+#レストラン検索APIのURL
+url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
+keyid = 'f8538f6f177eaaa41226f9fc9a805897'
+
+#パラメータの設定
+params={}
+params['keyid'] = keyid
+params['hit_per_page'] = '10'
+params["latitude"] = pgk[0] # 緯度
+params["longitude"] = pgk[1] # 経度
+params['range'] = range'''
+class Widget2(Widget):
     def __init__(self, master=None):
         super().__init__(master)
         
     def button_distance(self):
-        self.first_buttons()
-        #button_list[0].config(command=)
+        pass
 
+    def button_yen(self):
+        pass
 
+    def button_genre(self, event):
+        pass
 
-
-class ButtonYen(Widget):
-    pass
-
-class ButtonGenre(Widget):
-    pass
-'''
 def run():
     root = tk.Tk()
     root.geometry('540x960+0+0')
     root.title('ゴハンゴ')
-    app = Widget(root)
+    app = Widget2(root)
     root.mainloop()
 
 if __name__ == '__main__':
