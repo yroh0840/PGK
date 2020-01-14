@@ -7,7 +7,9 @@ class Widget(tk.Frame):
         self.pack()
         self.create_widgets()
         self.counter = 0
+        self.params_list = []
 
+    # ウィジェットの配置
     def create_widgets(self):
         self.canvass() # 背景画像表示
         self.first_buttons() # 最初のボタン表示
@@ -69,13 +71,13 @@ class Widget(tk.Frame):
         self.svar_state.set('active')
         self.frame_button1 = tk.Frame(self.parent_frame_1, width='280', height='64', bg='#fcf3e7')
         self.frame_button1.place(x=0, y=64)
-        text_color_list_1 = [('', 'magenta'), ('', 'pink'), ('', 'SeaGreen'), ('', 'LightSkyBlue'), ('', 'pink')]
+        text_color_list_1 = [('', 'magenta'), ('', 'pink'), ('', 'SeaGreen'), ('', 'LightSkyBlue'), ('', 'pink'), ('', 'yellow')]
         self.button_list1 = []
         for cn, (text, color) in enumerate(text_color_list_1):
-            self.button1 = tk.Button(self.frame_button1, text=text, bg=color, width=8, height=2, 
-                                    command=self.button1_command)
+            self.button1 = tk.Button(self.frame_button1, text=text, bg=color, width=9, height=2, 
+                                     command=self.button1_command)
             self.button_list1.append(self.button1)
-            self.button_list1[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
+            self.button_list1[cn].grid(row=0, column=cn, sticky=self.sticky, padx='1', ipadx='1', pady='10')
 
     # トークエリア二段目
     def talk_area_stage_2(self):
@@ -87,13 +89,13 @@ class Widget(tk.Frame):
         self.label_comment2.place(x=64, y=0, height=68, )
         self.frame_button2 = tk.Frame(self.parent_frame_2, width='280', height='64', bg='#fcf3e7')
         self.frame_button2.place(x=0, y=64)
-        text_color_list_2 = [('', 'magenta'), ('', 'yellow'), ('', 'SeaGreen'), ('', 'LightSkyBlue'), ('', 'pink')]
+        text_color_list_2 = [('', 'magenta'), ('', 'yellow'), ('', 'SeaGreen'), ('', 'LightSkyBlue'), ('', 'pink'), ('', 'yellow')]
         self.button_list2 = []
         for cn, (text, color) in enumerate(text_color_list_2):
-            self.button2 = tk.Button(self.frame_button2, text=text, bg=color, width=8, height=2, 
+            self.button2 = tk.Button(self.frame_button2, text=text, bg=color, width=9, height=2, 
                                      command=self.button2_command)
             self.button_list2.append(self.button2)
-            self.button_list2[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
+            self.button_list2[cn].grid(row=0, column=cn, sticky=self.sticky, padx='1', ipadx='1', pady='10')
 
     # トークエリア三段目
     def talk_area_stage_3(self):
@@ -105,13 +107,13 @@ class Widget(tk.Frame):
         self.label_comment3.place(x=64, y=0, height=68, )  
         self.frame_button3 = tk.Frame(self.parent_frame_3, width='280', height='64', bg='#fcf3e7')
         self.frame_button3.place(x=0, y=64)
-        text_color_list_3 = [('', 'magenta'), ('', 'yellow'), ('', 'SeaGreen'), ('', 'LightSkyBlue'), ('', 'pink')]
+        text_color_list_3 = [('', 'magenta'), ('', 'yellow'), ('', 'SeaGreen'), ('', 'LightSkyBlue'), ('', 'pink'), ('', 'yellow')]
         self.button_list3 = []
         for cn, (text, color) in enumerate(text_color_list_3):
-            self.button3 = tk.Button(self.frame_button3, text=text, bg=color, width=8, height=2, 
+            self.button3 = tk.Button(self.frame_button3, text=text, bg=color, width=9, height=2, 
                                      command=self.button3_command)
             self.button_list3.append(self.button3)
-            self.button_list3[cn].grid(row=0, column=cn, sticky=self.sticky, padx='10', pady='10')
+            self.button_list3[cn].grid(row=0, column=cn, sticky=self.sticky, padx='1', ipadx='1', pady='10')
 
     # トークエリア１段目のボタンコマンド
     def button1_command(self):    
@@ -122,11 +124,14 @@ class Widget(tk.Frame):
         self.button_list1[2].config(state='disabled')
         self.button_list1[3].config(state='disabled')
         self.button_list1[4].config(state='disabled')
+        self.button_list1[5].config(state='disabled')
+
         self.button_list2[0].config(state='active')
         self.button_list2[1].config(state='active')
         self.button_list2[2].config(state='active')
         self.button_list2[3].config(state='active')
         self.button_list2[4].config(state='active')
+        self.button_list2[5].config(state='active')
     # トークエリア２段目のボタンコマンド
     def button2_command(self):
         self.parent_frame_3.place(x=0, y=256)
@@ -136,11 +141,13 @@ class Widget(tk.Frame):
         self.button_list2[2].config(state='disabled')
         self.button_list2[3].config(state='disabled')
         self.button_list2[4].config(state='disabled')
+        self.button_list2[5].config(state='disabled')
         self.button_list3[0].config(state='active')
         self.button_list3[1].config(state='active')
         self.button_list3[2].config(state='active')
         self.button_list3[3].config(state='active')
         self.button_list3[4].config(state='active')
+        self.button_list3[5].config(state='active')
     # トークエリア３段目のボタンコマンド
     def button3_command(self): 
         self.parent_frame_rotation_1()
@@ -148,11 +155,14 @@ class Widget(tk.Frame):
         self.button_list3[1].config(state='disabled')
         self.button_list3[2].config(state='disabled')
         self.button_list3[3].config(state='disabled')
+        self.button_list3[4].config(state='disabled')
+        self.button_list3[5].config(state='disabled')
         self.button_list1[0].config(state='active')
         self.button_list1[1].config(state='active')
         self.button_list1[2].config(state='active')
         self.button_list1[3].config(state='active')
         self.button_list1[4].config(state='active')
+        self.button_list1[5].config(state='active')
 
 
     # トークを入れ替える関数
@@ -195,8 +205,24 @@ class Widget(tk.Frame):
         self.button_list3[1].config(text='和食')
         self.button_list3[2].config(text='洋食')
         self.button_list3[3].config(text='ラーメン')
-        self.button_list1[4].config(text='あたし！')
-        
+        self.button_list3[4].config(text='カレーライス')
+        self.button_list3[5].config(text='その他の料理')
+        self.button_list1[0].bind('<Button>', lambda event: self.params_list.append('300m'))
+        self.button_list1[1].bind('<Button>', lambda event: self.params_list.append('500m'))
+        self.button_list1[2].bind('<Button>', lambda event: self.params_list.append('1000m'))
+        self.button_list1[3].bind('<Button>', lambda event: self.params_list.append('2000m'))
+        self.button_list1[4].bind('<Button>', lambda event: self.params_list.append('5000m'))
+        self.button_list2[0].bind('<Button>', lambda event: self.params_list.append('500円'))
+        self.button_list2[1].bind('<Button>', lambda event: self.params_list.append('1000円'))
+        self.button_list2[2].bind('<Button>', lambda event: self.params_list.append('1500円'))
+        self.button_list2[3].bind('<Button>', lambda event: self.params_list.append('2000円'))
+        self.button_list2[4].bind('<Button>', lambda event: self.params_list.append('3000円'))
+        self.button_list3[0].bind('<Button>', lambda event: self.params_list.append('中華'))
+        self.button_list3[1].bind('<Button>', lambda event: self.params_list.append('和食'))
+        self.button_list3[2].bind('<Button>', lambda event: self.params_list.append('洋食'))
+        self.button_list3[3].bind('<Button>', lambda event: self.params_list.append('ラーメン'))
+        self.button_list3[4].bind('<Button>', lambda event: self.params_list.append('カレーライス'))
+        self.button_list3[5].bind('<Button>', lambda event: self.params_list.append('その他の料理'))
     def button_yen(self, event):
         self.svar_question_1.set('予算はいくら？')
         self.svar_question_2.set('どのジャンルがいいかな？')
@@ -215,7 +241,24 @@ class Widget(tk.Frame):
         self.button_list2[1].config(text='和食')
         self.button_list2[2].config(text='洋食')
         self.button_list2[3].config(text='ラーメン')
-        self.button_list2[4].config(text='あたし！')
+        self.button_list2[4].config(text='カレーライス')
+        self.button_list2[5].config(text='その他の料理')
+        self.button_list1[0].bind('<Button>', lambda event: self.params_list.append('500円'))
+        self.button_list1[1].bind('<Button>', lambda event: self.params_list.append('1000円'))
+        self.button_list1[2].bind('<Button>', lambda event: self.params_list.append('1500円'))
+        self.button_list1[3].bind('<Button>', lambda event: self.params_list.append('2000円'))
+        self.button_list1[4].bind('<Button>', lambda event: self.params_list.append('3000円'))
+        self.button_list3[0].bind('<Button>', lambda event: self.params_list.append('300m'))
+        self.button_list3[1].bind('<Button>', lambda event: self.params_list.append('500m'))
+        self.button_list3[2].bind('<Button>', lambda event: self.params_list.append('1000m'))
+        self.button_list3[3].bind('<Button>', lambda event: self.params_list.append('2000m'))
+        self.button_list3[4].bind('<Button>', lambda event: self.params_list.append('5000m'))
+        self.button_list2[0].bind('<Button>', lambda event: self.params_list.append('中華'))
+        self.button_list2[1].bind('<Button>', lambda event: self.params_list.append('和食'))
+        self.button_list2[2].bind('<Button>', lambda event: self.params_list.append('洋食'))
+        self.button_list2[3].bind('<Button>', lambda event: self.params_list.append('ラーメン'))
+        self.button_list2[4].bind('<Button>', lambda event: self.params_list.append('カレーライス'))
+        self.button_list2[5].bind('<Button>', lambda event: self.params_list.append('その他の料理'))
     def button_genre(self, event):
         self.svar_question_1.set('どのジャンルがいいかな？')
         self.svar_question_2.set('どの範囲で探す？')
@@ -234,46 +277,32 @@ class Widget(tk.Frame):
         self.button_list1[1].config(text='和食')
         self.button_list1[2].config(text='洋食')
         self.button_list1[3].config(text='ラーメン')
-        self.button_list1[4].config(text='あたし！')
-'''
-import requests
-import json
-import geocoder
-g = geocoder.ip('me')
-lat, lon = str(g.latlng[0]), str(g.latlng[1])
-pgk = ['34.7639591', '135.4932691']
-range = [str(5)]
-#レストラン検索APIのURL
-url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
-keyid = 'f8538f6f177eaaa41226f9fc9a805897'
+        self.button_list1[4].config(text='カレーライス')
+        self.button_list1[5].config(text='その他の料理')
+        self.button_list2[0].bind('<Button>', lambda event: self.params_list.append('300m'))
+        self.button_list2[1].bind('<Button>', lambda event: self.params_list.append('500m'))
+        self.button_list2[2].bind('<Button>', lambda event: self.params_list.append('1000m'))
+        self.button_list2[3].bind('<Button>', lambda event: self.params_list.append('2000m'))
+        self.button_list2[4].bind('<Button>', lambda event: self.params_list.append('5000m'))
+        self.button_list3[0].bind('<Button>', lambda event: self.params_list.append('500円'))
+        self.button_list3[1].bind('<Button>', lambda event: self.params_list.append('1000円'))
+        self.button_list3[2].bind('<Button>', lambda event: self.params_list.append('1500円'))
+        self.button_list3[3].bind('<Button>', lambda event: self.params_list.append('2000円'))
+        self.button_list3[4].bind('<Button>', lambda event: self.params_list.append('3000円'))
+        self.button_list1[0].bind('<Button>', lambda event: self.params_list.append('中華'))
+        self.button_list1[1].bind('<Button>', lambda event: self.params_list.append('和食'))
+        self.button_list1[2].bind('<Button>', lambda event: self.params_list.append('洋食'))
+        self.button_list1[3].bind('<Button>', lambda event: self.params_list.append('ラーメン'))
+        self.button_list1[4].bind('<Button>', lambda event: self.params_list.append('カレーライス'))
+        self.button_list1[5].bind('<Button>', lambda event: self.params_list.append('その他の料理'))
 
-#パラメータの設定
-params={}
-params['keyid'] = keyid
-params['hit_per_page'] = '10'
-params["latitude"] = pgk[0] # 緯度
-params["longitude"] = pgk[1] # 経度
-params['range'] = range'''
-'''
-class Widget2(Widget):
-    def __init__(self, master=None):
-        super().__init__(master)
-        
-    def button_distance(self):
-        pass
 
-    def button_yen(self):
-        pass
 
-    def button_genre(self, event):
-        pass
-'''
 def run():
     root = tk.Tk()
     root.geometry('540x960+0+0')
     root.title('ゴハンゴ')
     app = Widget(root)
     root.mainloop()
-
 if __name__ == '__main__':
     run()
