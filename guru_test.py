@@ -10,10 +10,11 @@ class GurunabiResponder:
         self.params_genre = dict([['中華', '中華'],['和食', '和食'],['洋食', '洋食'],['ラーメン', 'ラーメン'], ['カレーライス', 'カレーライス'], ['その他の料理', 'その他の料理']])
 
     def is_gurunabi(self, py_key):
-        if py_key in self.params_yen:
-            return self.get_gurunabi(self.params_yen[py_key])
-        else:
-            print('error')
+        try:
+            if py_key in self.params_yen:
+                return self.get_gurunabi(self.params_yen[py_key])
+        except KeyError:
+            print('そのような選択肢は、ありません！')
 
     def get_gurunabi(self, yen_value):
         url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
@@ -35,25 +36,13 @@ class GurunabiResponder:
             shop_url = shop_data['rest'][i]['url']
             shop_name = shop_data['rest'][i]['name']
             shop_data_budget = shop_data['rest'][i]['budget']
-            shop_budget_dict[shop_name] = shop_data_budget
+            shop_budget_dict[str(i+1)] = (shop_name, shop_data_budget, shop_url)
             if len(shop_budget_dict) == shop_data_hit:
-                result = []
-                for shop_name in shop_budget_dict:
-                    if shop_budget_dict[shop_name] <= yen_value:
-                        result.append(shop_budget_dict[shop_name])
-        return result
+                result_list = []
+                for shop_num in shop_budget_dict:
+                    if shop_budget_dict[shop_num] <= yen_value:
+                        result_list.append(shop_budget_dict[shop_num])
+        return result_list
+
 guru = GurunabiResponder()
 print(guru.is_gurunabi('3000円'))
-
-'''
-        forecast = '天気予報だよ～\n'
-        for weather in weather_data['forecasts']:
-            # 応答文字列を作成
-            forecast += (
-                '\n'                    # 改行
-                + weather['dateLabel']  # 予報日を取得
-                + 'の天気は'            # つなぎの文字列
-                + weather['telop']      # 天気情報を取得
-            )
-        return forecast
-'''
