@@ -1,9 +1,9 @@
 from widget_class import *
 from guru_test import *
 
-class Excute(Widget, GurunabiResponder):
+class Execute(Widget, GurunabiResponder):
     def __init__(self):
-        super(Excute, self).__init__()
+        super(Execute, self).__init__()
         super(GurunabiResponder, self).__init__()
     
     @staticmethod
@@ -15,7 +15,7 @@ class Excute(Widget, GurunabiResponder):
         root.mainloop()
 
 if __name__ == '__main__':
-    ex = Excute()
+    ex = Execute()
     ex.run()
 
 

@@ -20,18 +20,15 @@ class GurunabiResponder:
             print('そのような選択肢は、ありません！')
 
     def get_gurunabi(self, yen_value, genre_value):
-        print('Debug.>>>>>>>>>>>>>>>>')
         url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
         keyid = 'f8538f6f177eaaa41226f9fc9a805897'
         hit_per_page = '20'
         #pgk = ['34.7639591', '135.4932691']
         #geo = geocoder.ip('me')
         #lat, lon = str(geo.latlng[0]), str(geo.latlng[1])
-
         payload = { 'keyid': keyid,
                     'hit_per_page': hit_per_page,
                     'category_s': genre_value   }
-
         shop_data = requests.get(url, params = payload).json()
         shop_budget_dict = {}
         shop_data_hit = shop_data['hit_per_page']
