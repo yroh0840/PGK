@@ -8,7 +8,7 @@ range_param = [str(5)]
 #レストラン検索APIのURL
 url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
 keyid = 'f8538f6f177eaaa41226f9fc9a805897'
-hit_per_page = '10'
+hit_per_page = '100'
 #パラメータの設定
 params={}
 params['keyid'] = keyid
@@ -29,7 +29,8 @@ params['hit_per_page'] = hit_per_page
 #リクエスト結果
 result_api = requests.get(url, params)
 result_api = result_api.json()
-print(result_api['hit_per_page'])
+for i in range(result_api['hit_per_page']):
+    print(result_api['rest'][i]['budget'])
 '''
 ral = []
 for i in range(int(hit_per_page) - 1):
