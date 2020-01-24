@@ -45,7 +45,7 @@
 
 
 ＜ライブラリ･フレームワーク＞
-tkinter,os requests, sqlite3, json, googlemaps, geolocation, geocoder, django
+tkinter,os requests, sqlite3, json, webbrowser,  googlemaps, geolocation, geocoder, django
 
 ＜進捗＞
 ウィジェットの背景画像ボタン配置まで

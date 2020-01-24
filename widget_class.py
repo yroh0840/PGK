@@ -185,7 +185,6 @@ class Widget(tk.Frame):
             self.counter -= 1
     # 最初のボタン　範囲ボタンを押した後  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  9
     def button_distance(self, event):
-        self.data_list = []
         self.svar_question_1.set('どの範囲で探す？')
         self.svar_question_2.set('予算はいくら？')
         self.svar_question_3.set('どのジャンルがいいかな？')
@@ -298,8 +297,6 @@ class Widget(tk.Frame):
     def link(self, event):
         if not self.result_shop_info == None:
             webbrowser.open_new(self.result_shop_info[0][2])
-
-    
 
     def tmp(self):
         self.parent_frame_1.destroy(), self.parent_frame_2.destroy(), self.parent_frame_3.destroy()
